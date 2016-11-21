@@ -1,0 +1,105 @@
+﻿@model IEnumerable<WebLayer.Models.MedicamentoDetalhe>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Forma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apresentacao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="@item.Codigo">
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Forma)
+        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.Apresentacao)
+        </th>
+        <td>
+            @Html.ActionLink("Detalhe", "Detalhe", new { codigo = @item.Codigo })
+            
+        </td>
+    </tr>
+}
+
+</table>
+
+
+@section Scripts {
+
+    
+    @Scripts.Render("~/bundles/signalr")
+    <script src="~/signalr/hubs"></script>
+
+    <script>
+
+        function atualizarTabela(codigo, nome, forma, apresentacao) {
+            
+            console.info('Atualizando tabela...');
+
+            //Verificar se o medicamento existe
+            var linha = $('#' + codigo);
+            if (linha.length > 0) {
+                //Atualizar
+                console.info('Medicamento existente...');
+                $(linha).addClass("danger");
+            } else {
+                console.info('Novo medicamento...');
+                //Inserir
+                $('.table').append(
+                    '<tr class="success">' +
+                    '<td>' + codigo + '</td>' +
+                    '<td>' + nome + '</td>' +
+                    '<td>' + forma + '</td>' +
+                    '<td>' + apresentacao + '</td>' +
+                    '<td><a href="/Medicamento/Detalhe?codigo="' + codigo + '">Detalhe</a></td>'
+                );
+            }
+
+        }
+
+        $(document).ready(function () {
+            
+            //Conectar com o hub e definir os metodos js que serão
+            //chamados pelo signalr
+
+            var hub = $.connection.medicamentosHub;
+
+            hub.client.MedicamentoAlterado = function (codigo, nome, forma, apresentacao) {
+                //Chamar metodo js responsavel por desenhar a pessoa na tabela
+                atualizarTabela(codigo, nome, forma, apresentacao);
+            }
+
+
+            $.connection.hub.start().done(function() {
+                console.info("Conexao com o hub iniciada.");
+            });
+
+        });
+    </script>
+}

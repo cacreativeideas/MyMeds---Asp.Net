@@ -1,0 +1,98 @@
+﻿@model IEnumerable<WebLayer.Models.PessoaDetalhe>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="@item.Codigo">
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento)
+        </td>
+        <td>
+            @Html.ActionLink("Detalhe", "Detalhe", new { codigo = @item.Codigo })
+            
+        </td>
+    </tr>
+}
+
+</table>
+
+
+@section Scripts {
+
+    
+    @Scripts.Render("~/bundles/signalr")
+    <script src="~/signalr/hubs"></script>
+
+    <script>
+
+        function atualizarTabela(codigo, nome, cpf, dataNascimento) {
+            
+            console.info('Atualizando tabela...');
+
+            //Verificar se a pessoa existe
+            var linha = $('#' + codigo);
+            if (linha.length > 0) {
+                //Atualizar
+                console.info('Pessoa existente...');
+                $(linha).addClass("danger");
+            } else {
+                console.info('Nova pessoa...');
+                //Inserir
+                $('.table').append(
+                    '<tr class="success">' +
+                    '<td>' + codigo + '</td>' +
+                    '<td>' + nome + '</td>' +
+                    '<td>' + dataNascimento + '</td>' +
+                    '<td><a href="/Pessoa/Detalhe?codigo="' + codigo + '">Detalhe</a></td>'
+                );
+            }
+
+        }
+
+        $(document).ready(function () {
+            
+            //Conectar com o hub e definir os metodos js que serão
+            //chamados pelo signalr
+
+            var hub = $.connection.pessoasHub;
+
+            hub.client.pessoaAlterada = function (codigo, nome, cpf, dataNascimento) {
+                //Chamar metodo js responsavel por desenhar a pessoa na tabela
+                atualizarTabela(codigo, nome, cpf, dataNascimento);
+            }
+
+
+            $.connection.hub.start().done(function() {
+                console.info("Conexao com o hub iniciada.");
+            });
+
+        });
+    </script>
+}
