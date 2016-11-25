@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Dao\CorreiosDao.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Base.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dao\SqlServerDao.cs" />
     <Compile Include="Service References\ServicoCorreios\Reference.cs">
@@ -60,7 +61,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Tabelas\Base.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

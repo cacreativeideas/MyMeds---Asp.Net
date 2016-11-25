@@ -1,6 +1,7 @@
-﻿using BusinessLayer.BusinessObject;
+﻿using BusinessLayer.BO;
 using BusinessLayer.Dao;
 using BusinessLayer.Dto;
+using BusinessLayer.Facades;
 using BusinessLayer.Model;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace BusinessLayer.Facade
 
         public MedicamentoFacade()
         {
-            medicamentoBO = new MedicamentoBO(dao);
+            medicamentoBO = new MedicamentoBO(Dao);
         }
 
         public MedicamentoDto BuscarMedicamentoPorNome(string nome)
@@ -26,7 +27,7 @@ namespace BusinessLayer.Facade
             return medicamentoBO.BuscarMedicamentoPorNome(nome);
         }
 
-        public void SalvarMedicamento(ref MedicamentoDto medicamentoDto)
+        public void SalvarMedicamento(ref MedicamentoDto dto)
         {
             Log.Info("Salvando medicamento: " + dto.Nome);
 

@@ -25,7 +25,7 @@ namespace BusinessLayer.BO
         public void Salvar(MedicamentoDto medicamentoDto)
         {
             bool insert = false;
-            Medicamento medicamento = Dao.Buscar<Medicamento>(m => m.Codigo.Equals(medicamentoDto.Codigo)).FirstOrDefault();
+            Medicamento medicamento = Dao.Buscar<Medicamento>(m => m.Id.Equals(medicamentoDto.Codigo)).FirstOrDefault();
             insert = medicamento == null;
 
             medicamento = AutoMapper.Mapper.Map(medicamentoDto, medicamento);

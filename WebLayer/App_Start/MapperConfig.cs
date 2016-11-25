@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using WebLayer.Models;
+using WebLayer.ServiceMedicamento;
 using WebLayer.ServicePessoa;
 
 namespace WebLayer.App_Start

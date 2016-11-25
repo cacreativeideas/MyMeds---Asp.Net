@@ -35,9 +35,9 @@ namespace Tests
         {
             using (MedicamentoFacade facade = new MedicamentoFacade())
             {
-                MedicamentoDTO medicamento = new MedicamentoDTO();
+                MedicamentoDto medicamento = new MedicamentoDto();
 
-                medicamento = new MedicamentoDTO
+                medicamento = new MedicamentoDto
                 {
                     Registro = 1,
                     Processo = 1,
@@ -47,7 +47,7 @@ namespace Tests
                     Forma = "COMPRIMIDO SIMPLES"
                 };
 
-                facade.SalvarMedicamento(medicamento);
+                facade.SalvarMedicamento(ref medicamento);
 
                 var lista = facade.BuscarMedicamentoPorNome("ACIDO ASCORBICO + PARACETAMOL + CLORIDRATO DE FENILEFRINA");
 

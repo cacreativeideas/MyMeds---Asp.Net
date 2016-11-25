@@ -60,15 +60,26 @@
     <Compile Include="BO\BaseBO.cs" />
     <Compile Include="BO\CepBO.cs" />
     <Compile Include="BO\EnderecoBO.cs" />
+    <Compile Include="BO\ItemTratamentoBO.cs" />
+    <Compile Include="BO\MedicamentoBO.cs" />
     <Compile Include="BO\PessoaBO.cs" />
+    <Compile Include="BO\TratamentoBO.cs" />
     <Compile Include="Dao\SqlServerDao.cs" />
     <Compile Include="Dto\EnderecoDto.cs" />
+    <Compile Include="Dto\ItemTratamentoDto.cs" />
+    <Compile Include="Dto\MedicamentoDto.cs" />
     <Compile Include="Dto\PessoaDto.cs" />
+    <Compile Include="Dto\TratamentoDto.cs" />
     <Compile Include="Facades\BaseFacade.cs" />
+    <Compile Include="Facades\MedicamentoFacade.cs" />
     <Compile Include="Facades\PessoaFacade.cs" />
+    <Compile Include="Facades\TratamentoFacade.cs" />
+    <Compile Include="Model\Endereco.cs" />
+    <Compile Include="Model\ItemTratamento.cs" />
+    <Compile Include="Model\Medicamento.cs" />
+    <Compile Include="Model\Pessoa.cs" />
+    <Compile Include="Model\Tratamento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tabelas\Endereco.cs" />
-    <Compile Include="Tabelas\Pessoa.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

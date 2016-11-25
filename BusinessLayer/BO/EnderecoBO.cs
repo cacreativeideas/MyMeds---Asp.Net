@@ -1,6 +1,6 @@
 ﻿using BusinessLayer.Dao;
 using BusinessLayer.Dto;
-using BusinessLayer.Tabelas;
+using BusinessLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,5 @@
 ﻿using DataLayer.Migrations;
-using DataLayer.Tabelas;
+using DataLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Dto;
+using BusinessLayer.Facade;
 using BusinessLayer.Facades;
 using Microsoft.AspNet.SignalR.Client;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ namespace ServiceLayer
 
         public void SalvarMedicamento(MedicamentoDto medicamento)
         {
-            using (MedicamentoFacade medicamento = new MedicamentoFacade())
+            using (MedicamentoFacade facade = new MedicamentoFacade())
             {
                 facade.SalvarMedicamento(ref medicamento);
                 medicamentosHub.Invoke("NotificarAlteracao", medicamento.Codigo, medicamento.Nome, medicamento.Forma, medicamento.Apresentacao);

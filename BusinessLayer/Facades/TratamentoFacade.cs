@@ -1,5 +1,7 @@
-﻿using BusinessLayer.BusinessObject;
+﻿using BusinessLayer.BO;
 using BusinessLayer.Dao;
+using BusinessLayer.Dto;
+using BusinessLayer.Facades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +17,11 @@ namespace BusinessLayer.Facade
 
         public TratamentoFacade()
         {
-            tratamentoBO = new TratamentoBO(dao);
-            itemTratamentoBO = new ItemTratamentoBO(dao);
+            tratamentoBO = new TratamentoBO(Dao);
+            itemTratamentoBO = new ItemTratamentoBO(Dao);
         }
 
-        public void SalvarTratamento(ref TratamentoDto tratamentoDto)
+        public void SalvarTratamento(ref TratamentoDto dto)
         {
             Log.Info("Salvando tratamento: " + dto.Tratamento);
 

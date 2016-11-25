@@ -157,13 +157,21 @@
     <Compile Include="App_Start\MapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MedicamentoController.cs" />
     <Compile Include="Controllers\PessoaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\MedicamentosHub.cs" />
     <Compile Include="Hubs\PessoasHub.cs" />
+    <Compile Include="Models\MedicamentoViewModel.cs" />
     <Compile Include="Models\PessoaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ServiceMedicamento\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServicePessoa\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -194,9 +202,28 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Service References\ServiceMedicamento\ServiceMedicamento.wsdl" />
+    <None Include="Service References\ServiceMedicamento\ServiceMedicamento.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceMedicamento\ServiceMedicamento1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceMedicamento\ServiceMedicamento2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\ServiceMedicamento\WebLayer.ServiceMedicamento.MedicamentoDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ServicePessoa\configuration91.svcinfo" />
     <None Include="Service References\ServicePessoa\configuration.svcinfo" />
     <None Include="Service References\ServicePessoa\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceMedicamento\configuration91.svcinfo" />
+    <None Include="Service References\ServiceMedicamento\configuration.svcinfo" />
+    <None Include="Service References\ServiceMedicamento\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -220,6 +247,8 @@
     </Content>
     <Content Include="Views\Pessoa\Index.cshtml" />
     <Content Include="Views\Pessoa\Detalhe.cshtml" />
+    <Content Include="Views\Medicamento\Detalhe.cshtml" />
+    <Content Include="Views\Medicamento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -236,6 +265,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceMedicamento\" />
     <WCFMetadataStorage Include="Service References\ServicePessoa\" />
   </ItemGroup>
   <ItemGroup>

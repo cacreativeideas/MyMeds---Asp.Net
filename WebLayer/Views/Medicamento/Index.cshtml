@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WebLayer.Models.MedicamentoDetalhe>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Medicamentos";
 }
 
 <h2>Index</h2>
@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.Forma)
         </td>
         <th>
-            @Html.DisplayNameFor(model => model.Apresentacao)
+            @Html.DisplayFor(modelItem => item.Apresentacao)
         </th>
         <td>
             @Html.ActionLink("Detalhe", "Detalhe", new { codigo = @item.Codigo })

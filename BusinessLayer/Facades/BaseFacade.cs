@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLayer.Dao;
 using BusinessLayer.Dto;
-using BusinessLayer.Tabelas;
+using BusinessLayer.Model;
 using DataLayer.ServicoCorreios;
 using log4net;
 using log4net.Config;
