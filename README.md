@@ -53,11 +53,3 @@
 * ASP.NET MVC
 * WCF
 * SignalR
-
-### Front-end
-* Single Page Application utilizando apenas HTML5 e CSS3
-* Javascript puro / JQuery (e plugins)
-* AngularJS 1.x e Angular Material Design
-
-### Mobile ( iOS e Android )
-* À definir
